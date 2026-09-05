@@ -1,6 +1,6 @@
 # Reddit Fashion Trend & VLM Ingestion Pipeline
 
-![Databricks Table](Databricks_Fashion_Table.png)
+![Databricks Table](Databricks_Fashion_Table.png?v=2)
 
 An end-to-end data pipeline that scrapes fashion outfit images from Reddit, extracts structured garment metadata using a local Vision-Language Model (VLM), and ingests the data into a Databricks Lakehouse following Medallion Architecture principles.
 
