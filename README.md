@@ -152,7 +152,6 @@ python fashion_classifier.py
 ## Example Analytics Queries
 
 ### Find Outfits Featuring White Clothing
-Take advantage of native Spark SQL array functions:
 ```sql
 SELECT 
   p.title,
@@ -163,7 +162,7 @@ SELECT
   i.overallStyle
 FROM default.reddit_fashion_items i
 JOIN default.reddit_fashion_posts p ON i.postId = p.id
-WHERE array_contains(i.colors, 'white');
+WHERE i.primaryColor = 'white';
 ```
 
 ### Top Dominant Fashion Styles
@@ -175,16 +174,4 @@ FROM default.reddit_fashion_items
 WHERE overallStyle IS NOT NULL
 GROUP BY overallStyle
 ORDER BY item_count DESC;
-```
-
-### Most Common Clothing Colors (Unnested)
-```sql
-SELECT 
-  LOWER(TRIM(color)) AS color,
-  COUNT(*) AS occurrences
-FROM default.reddit_fashion_items
-LATERAL VIEW explode(colors) AS color
-GROUP BY 1
-ORDER BY occurrences DESC
-LIMIT 10;
 ```
